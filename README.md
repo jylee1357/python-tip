@@ -33,3 +33,12 @@ def solution(s):
         return False
     
 ```
+```
+#Instead of using two for loops use "and" in if statement!
+Example 1)
+def solution(s):
+    if (len(s)==4 or len(s)==6) and (any(c.isalpha() for c in the_string)) == False:
+        return True
+    else:
+        return False
+```
