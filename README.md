@@ -42,3 +42,11 @@ def solution(s):
     else:
         return False
 ```
+```
+# Counter, elements
+    Counter1 = Counter(str1_lst)
+    Counter2 = Counter(str2_lst)
+    
+    inter = list((Counter1 & Counter2).elements())
+    union = list((Counter1 | Counter2).elements())
+```
