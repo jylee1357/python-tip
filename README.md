@@ -50,3 +50,41 @@ def solution(s):
     inter = list((Counter1 & Counter2).elements())
     union = list((Counter1 | Counter2).elements())
 ```
+
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import networkx as nx
+
+df_w = pd.read_csv('network_weight.csv')
+df_p = pd.read_csv('network_pos.csv')
+
+size = 10
+edge_weights = []
+for i in range(len(df_w)):
+    for j in range(len(df_w.columns)):
+        edge_weights.append(df_w.iloc[i][j]*size)
+
+G = nx.Graph()
+
+for i in range(len(df_w.columns)):
+    G.add_node(df_w.columns[i])
+
+for i in range(len(df_w.columns)):
+    for j in range(len(df_w.columns)):
+        G.add_edge(df_w.columns[i],df_w.columns[j])
+
+pos = {}
+for i in range(len(df_w.columns)):
+    node = df_w.columns[i]
+    pos[node] = (df_p[node][0],df_p[node][1])
+
+nx.draw(G, pos, with_labels=True,font_size=16, node_size = 1000, node_color='k', font_color='w', width=edge_weights)
+
+plt.show()
+```
+
+
+
+
