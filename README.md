@@ -85,7 +85,12 @@ nx.draw(G, pos, with_labels=True,font_size=16, node_size = 1000, node_color='k',
 
 plt.show()
 ```
+```
+#simple list index
+s = "{{2},{2,1},{2,1,3},{2,1,3,4}}"
+s[2:-2] = '2},{2,1},{2,1,3},{2,1,3,4'
 
+```
 
 
 
