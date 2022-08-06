@@ -92,8 +92,10 @@ s[2:-2] = '2},{2,1},{2,1,3},{2,1,3,4'
 
 #split tip
 ls = sorted([s.split(',') for s in s[2:-2].split('},{')], key=len)
-
 ```
-
-
+```
+# How to save index and element at the same time using deque
+priorities = [2,3,1,2]
+d = deque([(i,v) for i,v in enumerate(priorities)])
+```
 
