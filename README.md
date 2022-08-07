@@ -98,4 +98,8 @@ ls = sorted([s.split(',') for s in s[2:-2].split('},{')], key=len)
 priorities = [2,3,1,2]
 d = deque([(i,v) for i,v in enumerate(priorities)])
 ```
-
+```
+# Mixing up the orders of list (getting all possible outcomes)
+import itertools
+list(itertools.permutations([1, 2, 3]))
+```
