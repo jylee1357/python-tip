@@ -103,3 +103,9 @@ d = deque([(i,v) for i,v in enumerate(priorities)])
 import itertools
 list(itertools.permutations([1, 2, 3]))
 ```
+```
+def solution(numbers):
+    numbers = list(map(str, numbers)) #converting int to string
+    numbers.sort(key=lambda x: x * 3, reverse=True) #sorting using lambda key function
+    return str(int(''.join(numbers)))
+```
