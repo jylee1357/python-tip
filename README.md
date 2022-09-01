@@ -111,8 +111,13 @@ def solution(numbers):
 ```
 ```
 # reading dataset (when there are many) and reading them as dictionary
-def solution(numbers):
-    numbers = list(map(str, numbers)) #converting int to string
-    numbers.sort(key=lambda x: x * 3, reverse=True) #sorting using lambda key function
-    return str(int(''.join(numbers)))
+gdf_dict={}
+for i, gpkg in enumerate(gpkg_list):
+    fn = gpkg.split('\\')[-1]
+    gdf = gpd.read_file(gpkg)
+    cols = ['id']
+    cols.append(gdf.columns[2])
+    gdf_dict[i] = gdf[cols]
+# combining all the dataset in the dictionary
+df = pd.concat(gdf_dict,axis=1)
 ```
