@@ -118,6 +118,7 @@ for i, gpkg in enumerate(gpkg_list):
     cols = ['id']
     cols.append(gdf.columns[2])
     gdf_dict[i] = gdf[cols]
+    
 # combining all the dataset in the dictionary
 df = pd.concat(gdf_dict,axis=1)
 ```
