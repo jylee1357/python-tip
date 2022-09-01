@@ -109,3 +109,10 @@ def solution(numbers):
     numbers.sort(key=lambda x: x * 3, reverse=True) #sorting using lambda key function
     return str(int(''.join(numbers)))
 ```
+```
+# reading dataset (when there are many) and reading them as dictionary
+def solution(numbers):
+    numbers = list(map(str, numbers)) #converting int to string
+    numbers.sort(key=lambda x: x * 3, reverse=True) #sorting using lambda key function
+    return str(int(''.join(numbers)))
+```
