@@ -111,6 +111,9 @@ def solution(numbers):
 ```
 ```
 # reading dataset (when there are many) and reading them as dictionary
+path_gpkg = 'C:/Users/SUNDO/Desktop/workplace/jb_weather/날씨결합명소/*.gpkg'
+gpkg_list = glob(path_gpkg)
+
 gdf_dict={}
 for i, gpkg in enumerate(gpkg_list):
     fn = gpkg.split('\\')[-1]
