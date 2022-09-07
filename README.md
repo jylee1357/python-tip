@@ -125,3 +125,19 @@ for i, gpkg in enumerate(gpkg_list):
 # combining all the dataset in the dictionary
 df = pd.concat(gdf_dict,axis=1)
 ```
+```
+# By using zfill, you can fill up the empty digits with 0 (ex: 6 -> 06)
+for r in raster_list:
+    y,m = r.split('\\')[-1].split('.')[0].split('_')
+    m = m.zfill(2)
+    y = y[2:]
+    input_tif = r
+    new_col = f'{y}_{m}_'
+    out_path = f'{out_dir}tmp{new_col}.gpkg'
+    processing.run("native:zonalstatisticsfb", 
+                   {'INPUT': input_shp,
+                    'INPUT_RASTER': input_tif,
+                    'RASTER_BAND':1,
+                    'COLUMN_PREFIX': new_col,
+                    'STATISTICS':[2],'OUTPUT':out_path})    
+ ```
