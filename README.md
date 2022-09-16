@@ -1,6 +1,6 @@
 # python-tip
 ```
-#Sorting list using lambda
+#Sorting list using lambda function
 
 Example 1)
 def solution(strings, n):
