@@ -13,7 +13,7 @@ def solution(strings, n):
 ```
 
 ```
-#Using 'OR' in if statement (s[i]  == 'p' or s[i] == 'p')
+#Using 'OR' in if Statement (s[i]  == 'p' or s[i] == 'p')
 
 Example 1)
 def solution(s):
