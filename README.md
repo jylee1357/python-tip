@@ -141,3 +141,7 @@ for r in raster_list:
                     'COLUMN_PREFIX': new_col,
                     'STATISTICS':[2],'OUTPUT':out_path})    
  ```
+```
+# When you want to add a column in a dataframe that show the length of other column just use
+df['count'] = df['column_name'].apply(lambda x: len(x))
+ ```
