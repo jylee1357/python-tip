@@ -145,6 +145,8 @@ for r in raster_list:
 # When you want to add a column in a dataframe that show the length of other column just use
 df['count'] = df['column_name'].apply(lambda x: len(x))
 ```
+
+```
 Regex Compilation
 \s: 공백 문자 및 탭 문자에 매치한다
 \b: 단어의 경계, 문자열 시작과 끝, 공백, 개행, 탭, 콤마, 구두점, 대시문자 등이 올 수 있다.
