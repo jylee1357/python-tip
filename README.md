@@ -145,3 +145,18 @@ for r in raster_list:
 # When you want to add a column in a dataframe that show the length of other column just use
 df['count'] = df['column_name'].apply(lambda x: len(x))
  ```
+Regex Compilation
+\s: 공백 문자 및 탭 문자에 매치한다
+\b: 단어의 경계, 문자열 시작과 끝, 공백, 개행, 탭, 콤마, 구두점, 대시문자 등이 올 수 있다.
+?: 바로 앞의 글자 혹은 그룹이 1개 혹은 0개이다.
+\w: 단어를 만들 수 있는 글자. 알파벳 대소문자, 숫자, 언더스코어를 포함한다.
+*: 0개 이상이다
+[bc]: b또는 c를 포함한다
+(b|c): b 또는 c를 포함한다
+
+r'(?P<road_sd>\b[가-힣]+[시도]\s+\b)?
+(?P<road_sg>\b[가-힣]+[시군]\s+\b)?
+(?P<road_g>\b[가-힣]+[구]\s+\b)?
+(?P<road_em>\b\w+[읍면]\s+\b)?
+(?P<road_rg>\b\w+[로길]\s*)+(?P<road_jb>([,|\s]*\d+-?\d*[^가-힣]*)+)'
+```
