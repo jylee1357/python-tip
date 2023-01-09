@@ -162,3 +162,16 @@ r'(?P<road_sd>\b[가-힣]+[시도]\s+\b)?
 (?P<road_em>\b\w+[읍면]\s+\b)?
 (?P<road_rg>\b\w+[로길]\s*)+(?P<road_jb>([,|\s]*\d+-?\d*[^가-힣]*)+)'
  ```
+
+```
+Splitting the element in a row and appending it as a new row
+def split_address(df):
+    
+    for i in range (len(df)):
+        aa = df['col_name'][i].split(",")
+        
+        for j in range(len(aa)):
+            df = df.append({'idx': i, 'col_name':aa[j]},ignore_index = True)
+        
+    return df
+ ```
