@@ -175,3 +175,20 @@ def split_address(df):
         
     return df
  ```
+
+```
+#Loading dataset using glob
+shp_lst2 = glob('./csv/*.csv') #Assigning path for dataset, use wildcard (*) when the name of datasets have a pattern.
+
+# Designate file name and save it as a new dataframe
+for s in shp_list: 
+    fn = s.split('\\')[-2].split('_')[-1]
+    print(fn)
+    gdf = gpd.read_file(s,encoding='cp949')
+    df = PNU_2_df(gdf)
+    dst = f'./csv/{fn}.csv'
+    print(dst)
+    df.to_csv(dst,index=False,encoding='utf8')
+        
+    return df
+ ```
