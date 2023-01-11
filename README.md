@@ -148,13 +148,13 @@ df['count'] = df['column_name'].apply(lambda x: len(x))
 
 ```
 Regex Compilation
-\s: 공백 문자 및 탭 문자에 매치한다
-\b: 단어의 경계, 문자열 시작과 끝, 공백, 개행, 탭, 콤마, 구두점, 대시문자 등이 올 수 있다.
-?: 바로 앞의 글자 혹은 그룹이 1개 혹은 0개이다.
-\w: 단어를 만들 수 있는 글자. 알파벳 대소문자, 숫자, 언더스코어를 포함한다.
-*: 0개 이상이다
-[bc]: b또는 c를 포함한다
-(b|c): b 또는 c를 포함한다
+\s: equal as either space or tab
+\b: boundary of words, beginning or end of a letter, space, tab, comma, apostrophe, dash, etc. 
+?: the letter prior to contains either 0 or 1 group of letters 
+\w: word, alphabet (including capital), numbers, underscore 
+*: more than 0
+[bc]: either contains b or c
+(b|c): either contains b or c
 
 r'(?P<road_sd>\b[가-힣]+[시도]\s+\b)?
 (?P<road_sg>\b[가-힣]+[시군]\s+\b)?
