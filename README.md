@@ -195,5 +195,5 @@ for s in shp_list:
 ```
 # Split the full xy coordinates into two different columns using lambda 
 df_geo_pnu['x'] = df_geo_pnu['xy'].apply(lambda x : x.split(",")[0])
-df_geo_pnu['y'] = df_geo_pnu['xy'].apply(lambda x : x.split(",")[1])
+df_geo_pnu['y'] = df_geo_pnu['xy'].apply(lambda x : x.split(",")[-1])
  ```
