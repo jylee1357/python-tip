@@ -197,3 +197,18 @@ for s in shp_list:
 df_geo_pnu['x'] = df_geo_pnu['xy'].apply(lambda x : x.split(",")[0])
 df_geo_pnu['y'] = df_geo_pnu['xy'].apply(lambda x : x.split(",")[-1])
  ```
+```
+# Merge dataframe different occasions
+df1 = pd.DataFrame({"key": list("bbacaab"), "data1":range(7)})
+df2 = pd.DataFrame({"data2":range(3), "key": list("abd")})
+
+#When there is a common column and you want to merge it on either left or right
+pd.merge(df1,df2, on = "key", how = "left")
+pd.merge(df1,df2, on = "key", how = "right")
+
+#When there is no common column but you want to merge it using two different key columns (use left_on and right_on)
+df5 = pd.DataFrame({"key2": list("bbacaab"), "data1":range(7)})
+df6 = pd.DataFrame({"data2":range(3), "key": list("abd")})
+
+pd.merge(df5,df6, left_on = "key2", right_on = "key")
+ ```
