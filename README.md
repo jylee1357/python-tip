@@ -212,3 +212,7 @@ df6 = pd.DataFrame({"data2":range(3), "key": list("abd")})
 
 pd.merge(df5,df6, left_on = "key2", right_on = "key")
  ```
+```
+#How to suppress scientific notation
+gdf_pnu['PNU_CD'].apply(lambda x: '%.0f' % x)
+```
