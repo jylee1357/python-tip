@@ -216,3 +216,58 @@ pd.merge(df5,df6, left_on = "key2", right_on = "key")
 #How to suppress scientific notation
 gdf_pnu['PNU_CD'].apply(lambda x: '%.0f' % x)
 ```
+```
+#Using API
+import requests
+import pprint
+import json
+
+#인증키 입력
+encoding = "d3rSSDLIYE05PVPSUtRYTVa%2BuRy%2FtXEDhS%2BBOlSn6Nc%2Bi%2Fsy9WXlgaM5%2BJOmVZyoTv3TNk5j%2BJkYu8wNHusX0Q%3D%3D"
+decoding = "d3rSSDLIYE05PVPSUtRYTVa+uRy/tXEDhS+BOlSn6Nc+i/sy9WXlgaM5+JOmVZyoTv3TNk5j+JkYu8wNHusX0Q=="
+
+#url 입력
+url =  "http://apis.data.go.kr/B552584/EvCharger/getChargerInfo?serviceKey=d3rSSDLIYE05PVPSUtRYTVa%2BuRy%2FtXEDhS%2BBOlSn6Nc%2Bi%2Fsy9WXlgaM5%2BJOmVZyoTv3TNk5j%2BJkYu8wNHusX0Q%3D%3D&numOfRows=100000&pageNo=1&dataType=json&zscode=36110"
+
+response = requests.get(url)
+contents = response.text
+
+pp = pprint.PrettyPrinter(indent=4)
+print(pp.pprint(contents))
+
+from os import name
+import xml.etree.ElementTree as et
+import pandas as pd
+import bs4
+from lxml import html
+from urllib.parse import urlencode, quote_plus, unquote
+
+
+#bs4 사용하여 item 태그 분리
+
+xml_obj = bs4.BeautifulSoup(contents,'lxml-xml')
+rows = xml_obj.findAll('item')
+print(rows)
+
+row_list = [] # 행값
+name_list = [] # 열이름값
+value_list = [] #데이터값
+
+# xml 안의 데이터 수집
+for i in range(0, len(rows)):
+    columns = rows[i].find_all()
+    #첫째 행 데이터 수집
+    for j in range(0,len(columns)):
+        if i ==0:
+            # 컬럼 이름 값 저장
+            name_list.append(columns[j].name)
+        # 컬럼의 각 데이터 값 저장
+        value_list.append(columns[j].text)
+    # 각 행의 value값 전체 저장
+    row_list.append(value_list)
+    # 데이터 리스트 값 초기화
+    value_list=[]
+    
+df_sejong = pd.DataFrame(row_list, columns=name_list)
+len(df_sejong)
+```
