@@ -271,3 +271,7 @@ for i in range(0, len(rows)):
 df_sejong = pd.DataFrame(row_list, columns=name_list)
 len(df_sejong)
 ```
+```
+#How to groupby and sum based on one column while keeping index and other columns
+new_df = jb_senior_pharm_intersection.groupby(['index'], as_index = False).sum()
+```
