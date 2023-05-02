@@ -279,3 +279,18 @@ new_df = jb_senior_pharm_intersection.groupby(['index'], as_index = False).sum()
 #How to get rid of "Unnamed :0" in pandas
 df_pharm = pd.read_csv("C:/Users/SUNDO/Desktop/workplace/2023 전라북도 빅데이터 분석사업/공공야간약국 데이터/전북약국현황.csv", encoding = "cp949", index_col = 0)
 ```
+```
+#How to read multiple csvs individually 
+import pandas as pd
+import os  
+# assign dataset names
+list_of_names = os.listdir("D:/workplace/연령별 인구현황/고령층")
+ 
+# create empty list
+df_lst = []
+ 
+# append datasets into the list
+for i in range(len(list_of_names)):
+    temp_df = pd.read_csv("D:/workplace/연령별 인구현황/고령층/"+list_of_names[i], encoding = "cp949")
+    df_lst.append(temp_df)
+```
