@@ -275,3 +275,7 @@ len(df_sejong)
 #How to groupby and sum based on one column while keeping index and other columns
 new_df = jb_senior_pharm_intersection.groupby(['index'], as_index = False).sum()
 ```
+```
+#How to get rid of "Unnamed :0" in pandas
+df_pharm = pd.read_csv("C:/Users/SUNDO/Desktop/workplace/2023 전라북도 빅데이터 분석사업/공공야간약국 데이터/전북약국현황.csv", encoding = "cp949", index_col = 0)
+```
