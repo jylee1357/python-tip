@@ -298,6 +298,7 @@ for i in range(len(list_of_names)):
 #Filter rows based on contents of each row 
 df[df['ids'].str.contains("ball")]
 ```
+```
 #Calculating Z-score using dataframe columns 
 df_senior_infant['zscore(생활인구)'] = (df_senior_infant['생활인구수(유아,노년층)'] - df_senior_infant['생활인구수(유아,노년층)'].mean())/df_senior_infant['생활인구수(유아,노년층)'].std(ddof=0)
 ```
