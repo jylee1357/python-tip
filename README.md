@@ -197,6 +197,11 @@ for s in shp_list:
 df_geo_pnu['x'] = df_geo_pnu['xy'].apply(lambda x : x.split(",")[0])
 df_geo_pnu['y'] = df_geo_pnu['xy'].apply(lambda x : x.split(",")[-1])
  ```
+ ```
+#Remove parenthesis from column in xy points 
+df['x'] = df['x'].str.replace("(","")
+df['y'] = df['y'].str.replace(")","")
+```
 ```
 # Merge dataframe different occasions
 df1 = pd.DataFrame({"key": list("bbacaab"), "data1":range(7)})
