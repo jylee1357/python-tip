@@ -311,3 +311,18 @@ df_senior_infant['zscore(생활인구)'] = (df_senior_infant['생활인구수(�
 #Calculating decile rank using dataframe columns
 df['시군구 별 Decile_rank'] = pd.qcut(df['Percentile Mean'],10,labels = False)
 ```
+```
+#Loading data using DASK
+ds_dict = {}
+for fp in csv_lst:
+    k = fp.split('_')[-1].split('.')[0]
+    print(k)
+    ds = dd.read_csv(fp,encoding = "cp949")
+    #print(ds.columns)
+    ds = ds.drop_duplicates(['id','x','y'])[['id','x','y']]
+    ds_dict[k] = ds
+
+ds = dd.concat(ds_dict).reset_index(index=False)
+ds = ds.drop_duplicates(['id','x','y'])[['id','x','y']]
+df = ds.compute()
+```
