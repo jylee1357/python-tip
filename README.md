@@ -334,3 +334,18 @@ my_list = [45111510,45111530,45111605,45111635,45111650,45111660,45111671,451116
 
 Filter_df = df.loc[my_list]
 ```
+```
+# How to save file using f string
+df_dict = {}
+trg_dir = "D:/workplace/2023 전주시 빅데이터 분석사업(생활인구)/result/2021-2022"
+
+for fp in csv_lst:
+    k = fp.split('_')[-1].split('.')[0]
+    print(k)
+    ds = dd.read_csv(fp)
+    ds = ds.groupby(['admdong_cd','etl_ymd','timezn_cd']).sum()
+    df = ds.compute()
+    df_dict[k] = df
+    trg_path = f'{trg_dir}/live_pop_{k}.csv'
+    df_dict[k].to_csv(trg_path)
+```
