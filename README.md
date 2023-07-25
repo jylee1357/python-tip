@@ -346,6 +346,26 @@ for fp in csv_lst:
     ds = ds.groupby(['admdong_cd','etl_ymd','timezn_cd']).sum()
     df = ds.compute()
     df_dict[k] = df
+    trg_path = **f'{trg_dir}/live_pop_{k}.csv'**
+    df_dict[k].to_csv(trg_path)
+```
+```
+# when dd.read_csv() keeps getting error on encoding
+csv_lst_2021 = glob('Z:/03. 데이터/06. 전라북도 분석데이터/2023 전라북도 빅데이터 분석사업/1. 유동인구/01. 21년 생활인구/압축해제/*/*.csv')
+csv_lst_2021 = csv_lst_2021[8:9]
+
+trg_dir = "D:/workplace/2023 전주시 빅데이터 분석사업(생활인구)/result/2021-2022"
+
+for fp in csv_lst_2021:
+    k = fp.split('_')[-1].split('.')[0]
+    print(k)
+    **ds = dd.read_csv(fp,low_memory = False, encoding='latin1',dtype={'admdong_cd': 'float64','etl_ymd': 'float64',
+                                                                     'id': 'object','f60': 'object','timezn_cd': 'object',
+                                                                    'x': 'object','y': 'object'})**
+    ds['admdong_cd'] = ds['admdong_cd'].astype('str')
+    ds = ds[ds['admdong_cd'].str[:4]=='4511']
+    df = ds.compute()   
+    df_dict[k] = df
     trg_path = f'{trg_dir}/live_pop_{k}.csv'
     df_dict[k].to_csv(trg_path)
 ```
