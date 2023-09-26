@@ -369,3 +369,8 @@ for fp in csv_lst_2021:
     trg_path = f'{trg_dir}/live_pop_{k}.csv'
     df_dict[k].to_csv(trg_path)
 ```
+```
+# When split gets **AttributeError: 'Series' object has no attribute 'split':** use lambda x
+df2020['x'] = df2020['xy'].apply(lambda x: x.split(',')[0])
+df2020['y'] = df2020['xy'].apply(lambda x: x.split(',')[-1])
+```
