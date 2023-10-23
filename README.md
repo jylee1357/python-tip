@@ -374,3 +374,9 @@ for fp in csv_lst_2021:
 df2020['x'] = df2020['xy'].apply(lambda x: x.split(',')[0])
 df2020['y'] = df2020['xy'].apply(lambda x: x.split(',')[-1])
 ```
+```
+# When you need to merge dataframes that have different amount of rows, use outer merge on a common column
+aa = pd.merge(df_2019,df_2020,how = "outer", on = "근무지")
+bb = pd.merge(aa,df_2021,how = "outer", on = "근무지")
+cc = pd.merge(bb,df_2022,how = "outer", on = "근무지")
+```
