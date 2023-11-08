@@ -380,3 +380,7 @@ aa = pd.merge(df_2019,df_2020,how = "outer", on = "근무지")
 bb = pd.merge(aa,df_2021,how = "outer", on = "근무지")
 cc = pd.merge(bb,df_2022,how = "outer", on = "근무지")
 ```
+```
+# When you need to filter by using first four letters or digits of a string
+df = df[df['admdong_cd'].str[:4]=='4511']
+```
